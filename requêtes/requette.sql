@@ -7,4 +7,3 @@ INNER JOIN Categorie ON Recette.Id_Categorie = Categorie.Id
 ORDER BY TempsPrepa DESC;
 
 -- 2) En modifiant la requête précédente, faites apparaître le nombre d'ingrédients nécessaire par recette.
-
