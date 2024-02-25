@@ -18,13 +18,14 @@
             echo "Erreur : ".$e->getMessage();
         }
 
-
+        //Effectuons la requête à l'aide de l'objet PDO
         $sqlQuery = 'SELECT * FROM Recette';
         $recetStatement = $bdd->prepare($sqlQuery);
+        //Afficher le résultat d'une requête SQL
         $recetStatement->execute();
         $recettes = $recetStatement->fetchAll();
 
-
+        // On affiche chaque recette une à une
         foreach ($recettes as $recette) {
         ?>
             <p><?php echo $recette['Nom']; ?></p>
