@@ -12,14 +12,16 @@
 
     
         try {
-            $bdd = new PDO("mysql:host=$dbHost;dbname=Recettes", $dbUser, $dbUserPassword);
+            $bdd = new PDO("mysql:host=$dbHost;dbname=Recettes", $dbUser, $dbUserPassword, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+            
             // echo "Connexion réussie !";
         } catch (PDOException $e) {
             echo "Erreur : ".$e->getMessage();
         }
 
         //Effectuons la requête à l'aide de l'objet PDO
-        $sqlQuery = 'SELECT * FROM Recette';
+        $sqlQuery = 'SELECT Nom, TempsPrepa, TypePlat FROM Recette
+        INNER JOIN Categorie ON Recette.Id = Categorie.Id';
         $recetStatement = $bdd->prepare($sqlQuery);
         //Afficher le résultat d'une requête SQL
         $recetStatement->execute();
