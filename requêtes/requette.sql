@@ -24,4 +24,15 @@ WHERE TempsPrepa >= 30;
 SELECT Nom
 FROM Recette
 WHERE Nom LIKE 'salade%';
+-- 5) Insérer une nouvelle recette: "Pâtes à la carbonara" dont la durée de réalisation est de 20 min avec
+-- les instructions de votre choix. Pensez à alimenter votre base de donées en conséquence afin de pouvoir 
+-- lister les détails de cette recettes (ingrédients)
+
+INSERT INTO Recette (Nom, TempsPrepa, instructions, Id_Categorie)
+VALUES ('Pâtes à la carbonara', 20, 'Faire cuire les pâtes dans un grand volume deau', 1)
+
+INSERT INTO Ingredient(Nom, UniteMesure, Prix)
+VALUES 
+('Lardons', 'Gramm', 9),
+('Parmesan', 'Gramm', 13);
 
