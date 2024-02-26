@@ -61,4 +61,15 @@ SELECT Ingredient.Nom AS Nom_Ingredient, relation0.QuantiteIngrd, Ingredient.Pri
 FROM relation0
 INNER JOIN Ingredient ON relation0.Id = Ingredient.Id
 WHERE relation0.Id_Recette = 8;
--- 10 
+-- 10 Ajouter un ingrédient en base de données : Poivre, unité : cuillère à café, prix : 2.5 €
+INSERT INTO Ingredient(Nom, UniteMesure, Prix)
+VALUES 
+('Poivre1', 'cuillère à café', 2.5);
+
+-- 11 Modifier le prix de l'ingrédient n°12(prix à votre convenance)
+UPDATE Ingredient
+SET Prix  = 4
+WHERE Id = 12;
+
+-- 12 Afficher le nombre de recettes par catégories : X entrée, Y plats, Z desserts
+
