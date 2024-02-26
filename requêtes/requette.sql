@@ -20,3 +20,8 @@ SELECT Nom, TempsPrepa
 FROM Recette
 WHERE TempsPrepa >= 30;
 
+-- 4) Afficher les recettes dont le nom contient le mot "Salade" (peu importe où est situé le mot en question)
+SELECT Nom
+FROM Recette
+WHERE Nom LIKE 'salade%';
+
