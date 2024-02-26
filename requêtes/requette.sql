@@ -15,3 +15,8 @@ INNER JOIN relation0 ON Recette.Id = relation0.Id_Recette
 GROUP BY Recette.Id, Recette.Nom  
 ORDER BY TempsPrepa DESC;
 
+-- 3)Afficher les recettes qui nécessitent au moins 30 min de préparation
+SELECT Nom, TempsPrepa
+FROM Recette
+WHERE TempsPrepa >= 30;
+
