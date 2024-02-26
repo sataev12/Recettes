@@ -57,3 +57,8 @@ INNER JOIN (
 WHERE Recette.Id = 8;
 
 -- 9)Afficher le détail de la recette n°5(liste des ingrédients, quantités et prix)
+SELECT Ingredient.Nom AS Nom_Ingredient, relation0.QuantiteIngrd, Ingredient.Prix *relation0.QuantiteIngrd AS Prix_Total
+FROM relation0
+INNER JOIN Ingredient ON relation0.Id = Ingredient.Id
+WHERE relation0.Id_Recette = 8;
+-- 10 
