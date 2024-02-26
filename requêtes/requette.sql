@@ -73,3 +73,7 @@ WHERE Id = 12;
 
 -- 12 Afficher le nombre de recettes par catégories : X entrée, Y plats, Z desserts
 
+SELECT Categorie.TypePlat, COUNT(Recette.Id_Categorie) AS NbCategorie
+FROM Categorie
+JOIN Recette ON Categorie.Id = Recette.Id_Categorie
+GROUP BY Categorie.Id, Categorie.TypePlat;
