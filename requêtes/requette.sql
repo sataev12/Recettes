@@ -36,3 +36,24 @@ VALUES
 ('Lardons', 'Gramm', 9),
 ('Parmesan', 'Gramm', 13);
 
+-- 6) Modifier le nom de la recette ayant comme identifiant id_recette = 3 (nom de la recette à votre convenance)
+UPDATE Recette
+SET Nom  = 'Recette de crêpes'
+WHERE Id = 3;
+
+-- 7) Supprimer la recette n°2 de la base de données
+DELETE FROM Recette
+WHERE Id = '4';
+
+-- 8) Afficher le prix total de la recette n°5
+SELECT Recette.Id, TotalPrix, Recette.Nom
+FROM Recette
+INNER JOIN (
+    SELECT relation0.Id_Recette, SUM(Ingredient.Prix * relation0.QuantiteIngrd) AS TotalPrix
+    FROM relation0
+    INNER JOIN Ingredient ON relation0.Id = Ingredient.Id
+    GROUP BY relation0.Id_Recette 
+) AS CalculatedTotal ON Recette.Id = CalculatedTotal.Id_Recette
+WHERE Recette.Id = 8;
+
+-- 9)Afficher le détail de la recette n°5(liste des ingrédients, quantités et prix)
