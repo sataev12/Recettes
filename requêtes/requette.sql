@@ -77,3 +77,19 @@ SELECT Categorie.TypePlat, COUNT(Recette.Id_Categorie) AS NbCategorie
 FROM Categorie
 JOIN Recette ON Categorie.Id = Recette.Id_Categorie
 GROUP BY Categorie.Id, Categorie.TypePlat;
+
+-- 13 Afficher les recettes qui contiennent l'ingrédient "Poulet"
+
+SELECT Recette.Nom, Ingredient.Nom
+FROM relation0
+INNER JOIN Recette ON relation0.Id_Recette = Recette.Id
+INNER JOIN Ingredient ON relation0.Id = Ingredient.Id
+WHERE Ingredient.Nom LIKE 'Poulet%'
+GROUP BY relation0.Id, relation0.Id_Recette
+
+-- 14 Mettez à jour toutes les recettes en diminuant leur temps de préparation de 5 minutes
+
+UPDATE Recette
+SET TempsPrepa = TempsPrepa - 5
+WHERE Id; 
+
