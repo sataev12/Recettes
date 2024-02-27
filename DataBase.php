@@ -20,8 +20,7 @@
         }
 
         //Effectuons la requête à l'aide de l'objet PDO
-        $sqlQuery = 'SELECT Nom, TempsPrepa, TypePlat FROM Recette
-        INNER JOIN Categorie ON Recette.Id = Categorie.Id';
+        $sqlQuery = 'SELECT * FROM Recette';
         $recetStatement = $bdd->prepare($sqlQuery);
         //Afficher le résultat d'une requête SQL
         $recetStatement->execute();

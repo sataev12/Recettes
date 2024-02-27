@@ -93,3 +93,70 @@ UPDATE Recette
 SET TempsPrepa = TempsPrepa - 5
 WHERE Id; 
 
+-- 15 Afficher les recettes qui ne nécessitent pas d'ingrédients coûtant plus de 2€ par unité de mesure
+
+SELECT DISTINCT Recette.Nom
+FROM Recette
+INNER JOIN relation0
+ON Recette.Id = relation0.Id_Recette
+WHERE Recette.Id NOT IN (
+    SELECT Recette.Id
+    FROM relation0
+    INNER JOIN Ingredient ON relation0.Id = Ingredient.Id
+    WHERE relation0.Id_Recette = Recette.Id
+    AND Ingredient.Prix > 2
+);
+
+-- 16) Afficher la/les recette(s) les plus rapides à préparer
+
+SELECT *
+FROM Recette
+WHERE TempsPrepa = (
+	SELECT MIN(TempsPrepa)
+    FROM Recette
+);
+
+-- 17) Trouver les recettes qui ne nécessitent aucun ingédient
+-- (par exemple la recette de la tasse d'eau chaude qui consiste à verser de l'eau chaude dans une tasse)
+SELECT Nom
+FROM Recette
+WHERE Id IS NOT IN (
+    SELECT Id_Recette
+    FROM relation0
+)
+
+-- 18) Trouver les ingrédients qui sont utilisés dans au moins 3 recettes
+
+SELECT Ingredient.Nom
+FROM relation0
+INNER JOIN Ingredient ON relation0.Id = Ingredient.Id
+GROUP BY Ingredient.Id
+HAVING COUNT(relation0.Id_Recette) >= 3
+
+-- 19) Ajouter un nouvel ingrédient à une recette spécifique
+INSERT INTO relation0 (Id, Id_Recette, QuantiteIngrd)
+VALUES (1, 14, 20);
+
+-- 20 Bonus: Trouver la recette la plus coûteuse de la base de donées
+SELECT Recette.Nom, ROUND(SUM(Ingredient.Prix * relation0.QuantiteIngrd),2) AS coutTotal
+FROM Recette
+INNER JOIN relation0 ON Recette.Id = relation0.Id_Recette
+INNER JOIN Ingredient ON Ingredient.Id = relation0.Id
+GROUP BY Recette.Id
+HAVING coutTotal >= ALL(
+	SELECT ROUND(SUM(Ingredient.Prix * relation0.QuantiteIngrd),2)
+    FROM Recette
+    INNER JOIN relation0 ON Recette.Id = relation0.Id_Recette
+	INNER JOIN Ingredient ON Ingredient.Id = relation0.Id
+    GROUP BY Recette.Id
+)
+
+
+
+
+
+
+
+
+
+
