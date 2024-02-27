@@ -20,7 +20,7 @@
         }
 
         //Effectuons la requête à l'aide de l'objet PDO
-        $sqlQuery = 'SELECT * FROM Recette';
+        $sqlQuery = 'SELECT * FROM Recette WHERE id_categorie = 8';
         $recetStatement = $bdd->prepare($sqlQuery);
         //Afficher le résultat d'une requête SQL
         $recetStatement->execute();
