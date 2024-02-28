@@ -14,22 +14,21 @@
         $recettes = $req->fetchAll(PDO::FETCH_ASSOC);
         $categories = $reqCategorie->fetchAll(PDO::FETCH_ASSOC);
         
-        foreach ($categories as $categorie) {
-            echo $categorie['TypePlat'];
-        }
-        echo $categories['TypePlat'];
+        // foreach ($categories as $categorie) {
+        //     echo $categorie['TypePlat'];
+        // }
+        // echo $categories['TypePlat'];
 
     echo //Avec les class de bootstrap on ajouts le style de notre tableau
-                    "<div class='container-btn'>
-                        <a class='btn btn-primary' href='./index.php'><span class='glyphicon'></span>Ajouter produit</a>
-                    </div>
-                    <table class='table table-striped table-bordered'>
+                    // "<div class='container-btn'>
+                    //     <a class='btn btn-primary' href='./index.php'><span class='glyphicon'></span>Ajouter produit</a>
+                    // </div>
+                    "<table class='table table-striped table-bordered'>
                         <thead>
                             <tr>
                                 <th>Nom</th>
                                 <th>Catégorie</th>
                                 <th>Temps Preparation</th>
-                                <th>Type Plat</th>
                             </tr>
                         <thead>
                         <tbody>";
@@ -40,15 +39,16 @@
                                     "<td>".$recette['Id_Categorie']."</td>",
                                     "<td>".$recette['TempsPrepa']."</td>";
                                     // Boucle pour afficher chaque 'TypePlat' pour cette recette
-    echo "<td>";
-    foreach ($categories as $categorie) {
-        echo $categorie['TypePlat']." ";
-    }
-    echo "</td>";
+                                    // echo "<td>";
+                                    // foreach ($categories as $categorie) {
+                                    //     echo $categorie['TypePlat']." ";
+                                    // }
+                                    // echo "</td>";
 
-    echo "</tr>";
+                                    // echo "</tr>";
                         }
-                        
+ $content = ob_get_clean();
+ require_once "./template.php";                       
                         
 
 ?>

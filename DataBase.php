@@ -20,18 +20,16 @@
         }
 
         //Effectuons la requête à l'aide de l'objet PDO
-        $sqlQuery = 'SELECT * FROM Recette WHERE id_categorie = 8';
-        $recetStatement = $bdd->prepare($sqlQuery);
-        //Afficher le résultat d'une requête SQL
-        $recetStatement->execute();
-        $recettes = $recetStatement->fetchAll();
+        // $sqlQuery = 'SELECT * FROM Recette WHERE id_categorie = 8';
+        // $recetStatement = $bdd->prepare($sqlQuery);
+        // //Afficher le résultat d'une requête SQL
+        // $recetStatement->execute();
+        // $recettes = $recetStatement->fetchAll();
 
         // On affiche chaque recette une à une
-        foreach ($recettes as $recette) {
-        ?>
-            <p><?php echo $recette['Nom']; ?></p>
-        <?php    
-        };
+        // foreach ($recettes as $recette) {
+         
+        // };
         ?>
         
 
